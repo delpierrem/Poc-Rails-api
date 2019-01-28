@@ -1,0 +1,13 @@
+all:
+  exclude:
+    - 'config/initializers/*'
+    - 'db/**/*'
+    - 'Gemfile'
+    - 'lib/**'
+
+# gitlab:
+#   slug: 9113381 # gitlab's project ID
+#   api_private_token: oWknnwqcGeDXYmRsUsW_
+#   api_endpoint: https://gitlab.com/api/v4
+#
+# # path	"delpierre_michel"

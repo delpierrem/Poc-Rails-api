@@ -1,0 +1,4 @@
+en:
+  errors:
+    unique?: "Already exists"
+    email?: 'Invalid format'

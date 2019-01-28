@@ -1,0 +1,218 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API",
+    "version": "v1"
+  },
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "Index todos",
+        "parameters": [
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "integer",
+            "required": false
+          }
+        ],
+        "tags": [
+          "Products"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a Product",
+        "tags": [
+          "Products"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "img_url": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "image": {
+                  "type": "file"
+                }
+              },
+              "required": [
+                "title",
+                "content",
+                "description",
+                "price",
+                "image"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "product created"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get a product",
+        "tags": [
+          "Products"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product found"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/products/{product_id}/reviews": {
+      "get": {
+        "summary": "Index product reviews",
+        "tags": [
+          "Reviews"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reviews lists found"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Creates a User",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "password_confirmation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password",
+                "password_confirmation"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "user created"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "login User",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user login"
+          },
+          "401": {
+            "description": "user login"
+          }
+        }
+      }
+    }
+  }
+}
